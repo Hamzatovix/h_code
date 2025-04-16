@@ -40,3 +40,30 @@
 .read-the-docs {
   color: #888;
 }
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1e90ff',
+        secondary: '#34495e',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+};
+
+#root {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  #root {
+    padding: 2rem;
+  }
+}

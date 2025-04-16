@@ -11,3 +11,21 @@ export default {
   },
   plugins: [],
 };
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{tsx,ts,jsx,js}'],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1e90ff',
+        secondary: '#34495e',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
