@@ -11,7 +11,7 @@ function App() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>[Твоё Имя] - Фронтенд-разработчик</title>
+        <title>H code</title>
         <meta
           name="description"
           content="Портфолио [Твоё Имя] — фронтенд-разработчика, специализирующегося на React, TypeScript и адаптивном дизайне."

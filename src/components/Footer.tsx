@@ -91,7 +91,7 @@ function Footer() {
         {/* Нижняя часть */}
         <div className="mt-6 pt-6 border-t border-gray-600 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-gray-400 text-xs">
-            © {new Date().getFullYear()} [Твоё Имя]. All rights reserved.
+            © {new Date().getFullYear()} hamzatovic inc. All rights reserved.
           </p>
           <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

@@ -29,7 +29,7 @@ function About() {
           className="max-w-3xl mx-auto bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center"
         >
           <img
-            src="src\assets\images\self.png"
+            src="src\assets\images\self.jpg"
             alt="[Твоё Имя] - фото"
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-blue-500"
           />
