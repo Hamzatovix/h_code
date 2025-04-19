@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 function About() {
+  const { t } = useTranslation();
+
   const skills = [
     { name: 'HTML', icon: 'https://cdn.svgporn.com/logos/html-5.svg', level: 85 },
     { name: 'CSS', icon: 'https://cdn.svgporn.com/logos/css-3.svg', level: 85 },
     { name: 'JavaScript', icon: 'https://cdn.svgporn.com/logos/javascript.svg', level: 65 },
     { name: 'React', icon: 'https://cdn.svgporn.com/logos/react.svg', level: 60 },
-    { name: 'Node.js', icon: 'https://cdn.svgporn.com/logos/nodejs-icon.svg', level: 60 },
-    
   ];
 
   return (
@@ -21,7 +21,7 @@ function About() {
           transition={{ duration: 0.8 }}
           className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100"
         >
-          About
+          {t('about.title')}
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -31,20 +31,21 @@ function About() {
           className="max-w-3xl mx-auto bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center"
         >
           <img
-            src="src\assets\images\self.jpg"
-            alt="[Твоё Имя] - фото"
+            src="src/assets/images/self.jpg"
+            alt={t('about.photo_alt')}
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-blue-500"
+            onError={(e) => {
+              console.error('Failed to load self image');
+              e.currentTarget.src = 'https://picsum.photos/128/128?random=1';
+            }}
           />
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-            I am a frontend developer with two years of experience building responsive and interactive
-            web applications. I enjoy writing clean and efficient code, as well as creating
-            user-friendly user experiences. My latest project was a task manager with a calendar and
-            dark mode support.
+            {t('about.description')}
           </p>
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-6">
-            Skills
+            {t('about.skills')}
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}

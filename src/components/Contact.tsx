@@ -1,33 +1,42 @@
+// src/components/Contact.tsx
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
 
 function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+  const { t } = useTranslation();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
   const [status, setStatus] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
-    const newErrors = { name: '', email: '', message: '' };
     let isValid = true;
+    const newErrors = { name: '', email: '', message: '' };
 
-    if (!form.name.trim()) {
-      newErrors.name = 'Имя обязательно';
+    if (!formData.name.trim()) {
+      newErrors.name = t('contact.name_error');
       isValid = false;
     }
-    if (!form.email.trim()) {
-      newErrors.email = 'Email обязателен';
+    if (!formData.email.trim()) {
+      newErrors.email = t('contact.email_error');
       isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      newErrors.email = 'Некорректный email';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = t('contact.email_invalid');
       isValid = false;
     }
-    if (!form.message.trim()) {
-      newErrors.message = 'Сообщение обязательно';
+    if (!formData.message.trim()) {
+      newErrors.message = t('contact.message_error');
       isValid = false;
-    } else if (form.message.length < 10) {
-      newErrors.message = 'Сообщение слишком короткое';
+    } else if (formData.message.length < 10) {
+      newErrors.message = t('contact.message_short');
       isValid = false;
     }
 
@@ -35,30 +44,23 @@ function Contact() {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    setIsSubmitting(true);
-    emailjs
-      .send(
-        'service_ng25mca', // Замени на реальный
-        'template_srbz46a', // Замени на реальный
-        form,
-        '_5jFxKLyE4u77Rrln' // Замени на реальный
-      )
-      .then(
-        () => {
-          setStatus('Сообщение отправлено!');
-          setForm({ name: '', email: '', message: '' });
-        },
-        () => setStatus('Ошибка. Попробуйте снова.')
-      )
-      .finally(() => setIsSubmitting(false));
+    setStatus(t('contact.sending'));
+    try {
+      // Имитация отправки (замените на реальный API)
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setStatus(t('contact.success'));
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus(t('contact.error'));
+    }
   };
 
   return (
-    <section id="contact" className="bg-gray-100 dark:bg-gray-800">
+    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -66,99 +68,58 @@ function Contact() {
           transition={{ duration: 0.8 }}
           className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100"
         >
-         Contact me
+          {t('contact.title')}
         </motion.h2>
         <motion.form
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto space-y-6 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg"
+          className="max-w-lg mx-auto"
         >
-          <div>
+          <div className="mb-4">
             <input
               type="text"
-              placeholder="Ваше имя"
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className={`w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 ${
-                errors.name ? 'border-red-500' : 'border-gray-300'
-              }`}
-              aria-invalid={errors.name ? 'true' : 'false'}
+              placeholder={t('contact.name_placeholder')}
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="w-full px-4 py-2 border rounded dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
-          <div>
+          <div className="mb-4">
             <input
               type="email"
-              placeholder="Ваш email"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className={`w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 ${
-                errors.email ? 'border-red-500' : 'border-gray-300'
-              }`}
-              aria-invalid={errors.email ? 'true' : 'false'}
+              placeholder={t('contact.email_placeholder')}
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full px-4 py-2 border rounded dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
-          <div>
+          <div className="mb-4">
             <textarea
-              placeholder="Ваше сообщение"
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className={`w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 ${
-                errors.message ? 'border-red-500' : 'border-gray-300'
-              }`}
-              rows={6}
-              aria-invalid={errors.message ? 'true' : 'false'}
+              placeholder={t('contact.message_placeholder')}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="w-full px-4 py-2 border rounded dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 h-32"
             />
             {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
           </div>
           <button
             type="submit"
-            disabled={isSubmitting}
-            className={`w-full p-4 rounded-lg text-white font-semibold transition-all duration-300 ${
-              isSubmitting
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700'
-            }`}
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-600 hover:to-purple-700 transition"
           >
-            {isSubmitting ? (
-              <span className="flex items-center justify-center">
-                <svg
-                  className="animate-spin h-5 w-5 mr-2 text-white"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                Отправка...
-              </span>
-            ) : (
-              'Отправить'
-            )}
+            {t('contact.send')}
           </button>
           {status && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className={`text-center ${
-                status.includes('Ошибка') ? 'text-red-500' : 'text-green-500'
+            <p
+              className={`text-center mt-4 ${
+                status === t('contact.success') ? 'text-green-500' : 'text-red-500'
               }`}
             >
               {status}
-            </motion.p>
+            </p>
           )}
         </motion.form>
       </div>

@@ -6,11 +6,8 @@ import { useTranslation } from 'react-i18next';
 
 interface Project {
   key: string;
-  title: string;
-  description: string;
   link: string;
   image: string;
-  details: string;
   tech: string[];
 }
 
@@ -21,29 +18,20 @@ function Projects() {
   const projects: Project[] = [
     {
       key: 'task_manager',
-      title: t('projects.task_manager.title'),
-      description: t('projects.task_manager.description'),
       link: 'https://task-manager-opal-eight.vercel.app/',
       image: project1Image,
-      details: t('projects.task_manager.details'),
       tech: ['React', 'TypeScript', 'Tailwind CSS'],
     },
     {
       key: 'portfolio',
-      title: t('projects.portfolio.title'),
-      description: t('projects.portfolio.description'),
       link: '#',
       image: '/assets/images/task-manager.webp',
-      details: t('projects.portfolio.details'),
       tech: ['React', 'TypeScript', 'Framer Motion'],
     },
     {
       key: 'draft',
-      title: t('projects.draft.title'),
-      description: t('projects.draft.description'),
       link: '#',
       image: '/assets/images/placeholder.jpg',
-      details: t('projects.draft.details'),
       tech: ['React', 'TypeScript', 'Framer Motion'],
     },
   ];

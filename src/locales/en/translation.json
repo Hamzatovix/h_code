@@ -10,11 +10,65 @@
       "about": "About",
       "projects": "Projects",
       "contact": "Contact",
-      "connect": "Connect"
+      "connect": "Connect",
+      "open_menu": "Open menu",
+      "close_menu": "Close menu"
+    },
+    "about": {
+      "title": "About",
+      "description": "I am a frontend developer with two years of experience building responsive and interactive web applications. I enjoy writing clean and efficient code, as well as creating user-friendly user experiences. My latest project was a task manager with a calendar and dark mode support.",
+      "skills": "Skills"
+    },
+    "projects": {
+      "title": "Projects",
+      "task_manager": {
+        "title": "Task Manager",
+        "description": "A web application for task management with a calendar and dark theme.",
+        "details": "Developed using React, TypeScript, and Tailwind CSS.",
+        "view": "View",
+        "go_to": "Go to",
+        "close": "Close"
+      },
+      "portfolio": {
+        "title": "Portfolio Website",
+        "description": "A personal portfolio with animations and responsive design.",
+        "details": "This site! Built with React, routing, and Framer Motion."
+      },
+      "draft": {
+        "title": "Draft",
+        "description": "Coming soon... get ready for something big!",
+        "details": "In development."
+      }
+    },
+    "contact": {
+      "title": "Contact Me",
+      "name_placeholder": "Your name",
+      "email_placeholder": "Your email",
+      "message_placeholder": "Your message",
+      "name_error": "Name is required",
+      "email_error": "Email is required",
+      "email_invalid": "Invalid email",
+      "message_error": "Message is required",
+      "message_short": "Message is too short",
+      "send": "Send",
+      "sending": "Sending...",
+      "success": "Message sent!",
+      "error": "Error. Try again."
+    },
+    "footer": {
+      "title": "H_ code",
+      "description": "Frontend Developer creating modern web experiences.",
+      "follow": "Follow Me",
+      "links": "Quick Links",
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact",
+      "copyright": "© 2025 hamzatovic inc. All rights reserved.",
+      "back_to_top": "Back to Top"
+    },
+    "theme_toggle": {
+      "light": "Switch to light theme",
+      "dark": "Switch to dark theme"
     }
   }
-
-
-
-
-  
