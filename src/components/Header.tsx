@@ -1,9 +1,13 @@
+// src/components/Header.tsx
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
+import LanguageToggle from './LanguageToggle';
+import { useTranslation } from 'react-i18next';
 
 function Header() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -25,10 +29,10 @@ function Header() {
   };
 
   const navItems = [
-    { name: 'Home', id: 'hero' },
-    { name: 'About', id: 'about' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Contact', id: 'contact' },
+    { name: t('header.home'), id: 'hero' },
+    { name: t('header.about'), id: 'about' },
+    { name: t('header.projects'), id: 'projects' },
+    { name: t('header.contact'), id: 'contact' },
   ];
 
   return (
@@ -80,14 +84,16 @@ function Header() {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg"
           >
-            Связаться
+            {t('header.connect')}
           </motion.a>
 
           <ThemeToggle />
+          <LanguageToggle />
         </div>
 
         <div className="lg:hidden flex items-center gap-4">
           <ThemeToggle />
+          <LanguageToggle />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="focus:outline-none"
@@ -148,7 +154,7 @@ function Header() {
               className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-full hover:from-blue-600 hover:to-purple-700"
               onClick={() => setIsMenuOpen(false)}
             >
-              Связаться
+              {t('header.connect')}
             </motion.a>
           </ul>
         </motion.div>

@@ -1,9 +1,12 @@
+// src/components/Hero.tsx
 import { motion } from 'framer-motion';
 import Particles from 'react-particles';
-import { loadSlim } from 'tsparticles-slim'; // Используем loadSlim
+import { loadSlim } from 'tsparticles-slim';
 import type { Engine } from 'tsparticles-engine';
+import { useTranslation } from 'react-i18next';
 
 function Hero() {
+  const { t } = useTranslation();
   const particlesInit = async (engine: Engine) => {
     await loadSlim(engine);
   };
@@ -13,7 +16,6 @@ function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-900 animate-gradient overflow-hidden"
     >
-      {/* Частицы */}
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -49,7 +51,6 @@ function Hero() {
         className="absolute inset-0 z-0"
       />
 
-      {/* Основной контент */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -57,29 +58,27 @@ function Hero() {
         className="relative text-center px-4 z-10"
       >
         <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-          We create websites that come to life
+          {t('hero.title')}
         </h1>
         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-          We are developing interfaces, specializing in creating interactive and responsive user
-          interfaces.
+          {t('hero.description')}
         </p>
         <div className="flex justify-center gap-4">
           <a
             href="#projects"
             className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full hover:from-blue-600 hover:to-purple-700 transition shadow-md hover:shadow-lg"
           >
-            Посмотреть проекты
+            {t('hero.view_projects')}
           </a>
           <a
             href="#contact"
             className="inline-block border-2 border-blue-500 text-blue-500 dark:text-blue-400 dark:border-blue-400 px-6 py-3 rounded-full hover:bg-blue-500 hover:text-white dark:hover:text-white transition"
           >
-            Написать мне
+            {t('hero.contact_me')}
           </a>
         </div>
       </motion.div>
 
-      {/* Декоративный элемент */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 0.2, scale: 1 }}

@@ -1,0 +1,20 @@
+{
+    "hero": {
+      "title": "We create websites that come to life",
+      "description": "We develop interfaces, specializing in creating interactive and responsive user interfaces.",
+      "view_projects": "View Projects",
+      "contact_me": "Contact Me"
+    },
+    "header": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact",
+      "connect": "Connect"
+    }
+  }
+
+
+
+
+  

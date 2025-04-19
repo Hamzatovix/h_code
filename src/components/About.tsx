@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 function About() {
   const skills = [
@@ -7,6 +8,7 @@ function About() {
     { name: 'JavaScript', icon: 'https://cdn.svgporn.com/logos/javascript.svg', level: 65 },
     { name: 'React', icon: 'https://cdn.svgporn.com/logos/react.svg', level: 60 },
     { name: 'Node.js', icon: 'https://cdn.svgporn.com/logos/nodejs-icon.svg', level: 60 },
+    
   ];
 
   return (

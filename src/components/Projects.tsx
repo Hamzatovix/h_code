@@ -1,9 +1,11 @@
+// src/components/Projects.tsx
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import project1Image from '../assets/images/projects/project1.jpg';
+import { useTranslation } from 'react-i18next';
 
-// Определяем интерфейс для проекта
 interface Project {
+  key: string;
   title: string;
   description: string;
   link: string;
@@ -13,32 +15,35 @@ interface Project {
 }
 
 function Projects() {
-  // Типизируем состояние как Project | null
+  const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const projects: Project[] = [
     {
-      title: 'Task Manager',
-      description: 'Веб-приложение для управления задачами с календарем и тёмной темой.',
+      key: 'task_manager',
+      title: t('projects.task_manager.title'),
+      description: t('projects.task_manager.description'),
       link: 'https://task-manager-opal-eight.vercel.app/',
       image: project1Image,
-      details: 'Разработано с использованием React, TypeScript и Tailwind CSS.',
+      details: t('projects.task_manager.details'),
       tech: ['React', 'TypeScript', 'Tailwind CSS'],
     },
     {
-      title: 'Portfolio Website',
-      description: 'Личное портфолио с анимациями и адаптивным дизайном.',
+      key: 'portfolio',
+      title: t('projects.portfolio.title'),
+      description: t('projects.portfolio.description'),
       link: '#',
       image: '/assets/images/task-manager.webp',
-      details: 'Этот сайт! Построен на React с маршрутизацией и Framer Motion.',
+      details: t('projects.portfolio.details'),
       tech: ['React', 'TypeScript', 'Framer Motion'],
     },
     {
-      title: 'Draft',
-      description: 'Soon... and be ready for biggest empretion///////////',
+      key: 'draft',
+      title: t('projects.draft.title'),
+      description: t('projects.draft.description'),
       link: '#',
-      image: '/assets/images/placeholder.jpg', // Исправлен путь
-      details: 'Этот сайт! Построен на React с маршрутизацией и Framer Motion.',
+      image: '/assets/images/placeholder.jpg',
+      details: t('projects.draft.details'),
       tech: ['React', 'TypeScript', 'Framer Motion'],
     },
   ];
@@ -52,7 +57,7 @@ function Projects() {
           transition={{ duration: 0.8 }}
           className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100"
         >
-          Projects
+          {t('projects.title')}
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
@@ -66,7 +71,7 @@ function Projects() {
             >
               <img
                 src={project.image}
-                alt={`${project.title} screenshot`}
+                alt={`${t(`projects.${project.key}.title`)} screenshot`}
                 className="w-full h-48 object-cover"
                 onError={(e) => {
                   e.currentTarget.src = 'https://picsum.photos/400/300?random=1';
@@ -74,9 +79,9 @@ function Projects() {
               />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
-                  {project.title}
+                  {t(`projects.${project.key}.title`)}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{t(`projects.${project.key}.description`)}</p>
                 <a
                   href={project.link}
                   target="_blank"
@@ -84,7 +89,7 @@ function Projects() {
                   className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-600 hover:to-purple-700 transition"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Посмотреть
+                  {t('projects.task_manager.view')}
                 </a>
               </div>
             </motion.div>
@@ -107,17 +112,17 @@ function Projects() {
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-              {selectedProject.title}
+              {t(`projects.${selectedProject.key}.title`)}
             </h3>
             <img
               src={selectedProject.image}
-              alt={`${selectedProject.title} screenshot`}
+              alt={`${t(`projects.${selectedProject.key}.title`)} screenshot`}
               className="w-full h-40 object-cover rounded mb-4"
               onError={(e) => {
                 e.currentTarget.src = 'https://picsum.photos/400/300?random=1';
               }}
             />
-            <p className="text-gray-600 dark:text-gray-300 mb-4">{selectedProject.details}</p>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">{t(`projects.${selectedProject.key}.details`)}</p>
             <div className="flex flex-wrap gap-2 mb-4">
               {selectedProject.tech.map((tech: string, index: number) => (
                 <span
@@ -135,13 +140,13 @@ function Projects() {
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
-                Перейти
+                {t('projects.task_manager.go_to')}
               </a>
               <button
                 onClick={() => setSelectedProject(null)}
                 className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-800"
               >
-                Закрыть
+                {t('projects.task_manager.close')}
               </button>
             </div>
           </motion.div>

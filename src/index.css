@@ -18,6 +18,36 @@ body {
   width: 100%;
 }
 
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* SemiBold для большинства заголовков */
+}
+
+h1 {
+  font-size: 2.5rem; /* 40px, можно настроить */
+  font-weight: 700; /* Bold для h1 */
+}
+
+h2 {
+  font-size: 2rem; /* 32px */
+}
+
+h3 {
+  font-size: 1.5rem; /* 24px */
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Уменьшаем для мобильных */
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
 body.dark {
   background: #1e2a38;
   color: #e0e6ed;
