@@ -1,7 +1,9 @@
-// src/components/Contact.tsx
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Contact() {
   const { t } = useTranslation();
@@ -50,12 +52,24 @@ function Contact() {
 
     setStatus(t('contact.sending'));
     try {
-      // Имитация отправки (замените на реальный API)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await emailjs.send(
+        service_ng25mca, // Замени на твой Service ID
+        template_srbz46a, // Замени на твой Template ID
+        formData,
+        _5jFxKLyE4u77Rrln // Замени на твой Public Key
+      );
       setStatus(t('contact.success'));
+      toast.success(t('contact.success'), {
+        position: 'top-right',
+        autoClose: 3000,
+      });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       setStatus(t('contact.error'));
+      toast.error(t('contact.error'), {
+        position: 'top-right',
+        autoClose: 3000,
+      });
     }
   };
 
@@ -122,6 +136,7 @@ function Contact() {
             </p>
           )}
         </motion.form>
+        <ToastContainer />
       </div>
     </section>
   );
