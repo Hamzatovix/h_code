@@ -53,10 +53,10 @@ function Contact() {
     setStatus(t('contact.sending'));
     try {
       await emailjs.send(
-        service_ng25mca, // Замени на твой Service ID
-        template_srbz46a, // Замени на твой Template ID
+        'service_ng25mca', // Service ID как строка
+        'template_srbz46a', // Template ID как строка
         formData,
-        _5jFxKLyE4u77Rrln // Замени на твой Public Key
+        '_5jFxKLyE4u77Rrln' // Public Key как строка
       );
       setStatus(t('contact.success'));
       toast.success(t('contact.success'), {
