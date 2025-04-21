@@ -32,7 +32,7 @@ function Header() {
     { name: t('header.home'), id: 'hero' },
     { name: t('header.about'), id: 'about' },
     { name: t('header.projects'), id: 'projects' },
-    { name: t('header.contact'), id: 'contact' },
+
   ];
 
   return (

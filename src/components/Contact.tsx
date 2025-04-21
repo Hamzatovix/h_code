@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 function Contact() {
   const { t } = useTranslation();
@@ -53,10 +52,10 @@ function Contact() {
     setStatus(t('contact.sending'));
     try {
       await emailjs.send(
-        'service_ng25mca', // Service ID как строка
-        'template_srbz46a', // Template ID как строка
+        'service_ng25mca',
+        'template_srbz46a',
         formData,
-        '_5jFxKLyE4u77Rrln' // Public Key как строка
+        '_5jFxKLyE4u77Rrln'
       );
       setStatus(t('contact.success'));
       toast.success(t('contact.success'), {
@@ -136,7 +135,6 @@ function Contact() {
             </p>
           )}
         </motion.form>
-        <ToastContainer />
       </div>
     </section>
   );

@@ -20,25 +20,25 @@ body {
 
 h1, h2, h3 {
   font-family: 'Poppins', sans-serif;
-  font-weight: 600; /* SemiBold для большинства заголовков */
+  font-weight: 600;
 }
 
 h1 {
-  font-size: 2.5rem; /* 40px, можно настроить */
-  font-weight: 700; /* Bold для h1 */
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 h2 {
-  font-size: 2rem; /* 32px */
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem;
 }
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem; /* Уменьшаем для мобильных */
+    font-size: 2rem;
   }
   h2 {
     font-size: 1.75rem;
@@ -84,7 +84,7 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  scroll-margin-top: 80px; /* Отступ для фиксированного хедера */
+  scroll-margin-top: 80px;
 }
 
 .container {
@@ -98,11 +98,6 @@ section {
 .grid {
   justify-items: center;
 }
-
-/* .skill-icon:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s;
-} */
 
 button:focus,
 a:focus {
@@ -119,4 +114,14 @@ a:focus {
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient 15s ease infinite;
+}
+
+/* Стили для ToastContainer */
+#toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  width: auto;
+  max-width: 320px;
 }
