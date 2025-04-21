@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
-import { toast } from 'react-toastify';
 
 function Contact() {
   const { t } = useTranslation();
@@ -58,19 +57,18 @@ function Contact() {
         '_5jFxKLyE4u77Rrln'
       );
       setStatus(t('contact.success'));
-      toast.success(t('contact.success'), {
-        position: 'top-right',
-        autoClose: 3000,
-      });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       setStatus(t('contact.error'));
-      toast.error(t('contact.error'), {
-        position: 'top-right',
-        autoClose: 3000,
-      });
     }
   };
+
+  useEffect(() => {
+    if (status === t('contact.success') || status === t('contact.error')) {
+      const timer = setTimeout(() => setStatus(''), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [status, t]);
 
   return (
     <section id="contact" className="pt-10 pb-20 bg-gray-100 dark:bg-gray-800">
@@ -121,9 +119,10 @@ function Contact() {
           </div>
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-600 hover:to-purple-700 transition"
+            disabled={status === t('contact.sending')}
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-600 hover:to-purple-700 transition disabled:opacity-50"
           >
-            {t('contact.send')}
+            {status === t('contact.sending') ? t('contact.sending') : t('contact.send')}
           </button>
           {status && (
             <p

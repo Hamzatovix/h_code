@@ -7,9 +7,6 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './styles/toastify.css';
 
 function App() {
   const { t } = useTranslation();
@@ -36,7 +33,7 @@ function App() {
         <meta name="author" content="Mansur Hamzatov" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <link rel="canonical" href="https://h-code-three.vercel.app/" />
         <meta property="og:title" content={t('meta.title')} />
         <meta property="og:description" content={t('meta.description')} />
@@ -57,19 +54,6 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        style={{ margin: 0, padding: 0, minHeight: 0 }}
-      />
     </HelmetProvider>
   );
 }
