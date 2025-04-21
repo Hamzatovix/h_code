@@ -1,5 +1,11 @@
 {
-    "hero": {
+  "meta": {
+    "title": "H_code | Frontend Developer Portfolio",
+    "description": "Portfolio of Mansur Hamzatov, a frontend developer specializing in React, TypeScript, and responsive design.",
+    "keywords": "frontend developer, React, TypeScript, Tailwind, portfolio, web development, Mansur Hamzatov"
+  },
+  
+  "hero": {
       "title": "We create websites that come to life",
       "description": "We develop interfaces, specializing in creating interactive and responsive user interfaces.",
       "view_projects": "View Projects",
@@ -21,23 +27,23 @@
     },
     "projects": {
       "title": "Projects",
+      "view": "View",
       "task_manager": {
         "title": "Task Manager",
-        "description": "A web application for task management with a calendar and dark theme.",
-        "details": "Developed using React, TypeScript, and Tailwind CSS.",
-        "view": "View",
+        "description": "A task management application built with React and TypeScript.",
+        "details": "A fully functional task management app with responsive design.",
         "go_to": "Go to",
         "close": "Close"
       },
       "portfolio": {
-        "title": "Portfolio Website",
-        "description": "A personal portfolio with animations and responsive design.",
-        "details": "This site! Built with React, routing, and Framer Motion."
+        "title": "Portfolio",
+        "description": "Personal portfolio showcasing frontend development skills.",
+        "details": "Built with React, TypeScript, and Framer Motion."
       },
       "draft": {
         "title": "Draft",
-        "description": "Coming soon... get ready for something big!",
-        "details": "In development."
+        "description": "Project in development.",
+        "details": "Planned project using React and TypeScript."
       }
     },
     "contact": {
@@ -56,19 +62,17 @@
       "error": "Error. Try again."
     },
     "footer": {
-      "title": "H_ code",
-      "description": "Frontend Developer creating modern web experiences.",
-      "follow": "Follow Me",
-      "links": "Quick Links",
-      "home": "Home",
-      "about": "About",
-      "projects": "Projects",
-      "contact": "Contact",
-      "copyright": "© 2025 hamzatovic inc. All rights reserved.",
-      "back_to_top": "Back to Top"
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "linkedin": "LinkedIn",
+      "copyright": "© 2025 Hamzatovic inc. All rights reserved."
     },
     "theme_toggle": {
       "light": "Switch to light theme",
       "dark": "Switch to dark theme"
+    },
+    "landing_page": {
+      "title": "Landing Page",
+      "description": "A responsive landing page built with HTML, CSS, and JavaScript."
     }
   }

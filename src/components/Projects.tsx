@@ -1,4 +1,3 @@
-// src/components/Projects.tsx
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import project1Image from '../assets/images/projects/project1.jpg';
@@ -37,7 +36,7 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="projects" className="pt-20 pb-10 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -54,7 +53,7 @@ function Projects() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer"
+              className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden flex flex-col max-w-sm w-full h-[450px]"
               onClick={() => setSelectedProject(project)}
             >
               <img
@@ -65,19 +64,21 @@ function Projects() {
                   e.currentTarget.src = 'https://picsum.photos/400/300?random=1';
                 }}
               />
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
                   {t(`projects.${project.key}.title`)}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{t(`projects.${project.key}.description`)}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow overflow-hidden">
+                  {t(`projects.${project.key}.description`)}
+                </p>
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded hover:from-blue-600 hover:to-purple-700 transition"
+                  className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded hover:from-blue-600 hover:to-purple-700 transition mt-auto w-fit"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {t('projects.task_manager.view')}
+                  {t('projects.view')}
                 </a>
               </div>
             </motion.div>

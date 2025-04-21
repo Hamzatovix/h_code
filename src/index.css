@@ -125,3 +125,7 @@ a:focus {
   width: auto;
   max-width: 320px;
 }
+
+.Toastify {
+  display: none;
+}

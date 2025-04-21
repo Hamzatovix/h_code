@@ -73,7 +73,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="contact" className="pt-10 pb-20 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
