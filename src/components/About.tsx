@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import selfImage from '../assets/images/self.jpg'; // Импортируем self.jpg
 
 function About() {
   const { t } = useTranslation();
@@ -31,9 +32,10 @@ function About() {
           className="max-w-3xl mx-auto bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center"
         >
           <img
-            src="src/assets/images/self.jpg"
+            src={selfImage}
             alt={t('about.photo_alt')}
             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-blue-500"
+            loading="lazy" // Оптимизация загрузки
             onError={(e) => {
               console.error('Failed to load self image');
               e.currentTarget.src = 'https://picsum.photos/128/128?random=1';
